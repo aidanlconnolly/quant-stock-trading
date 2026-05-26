@@ -1,4 +1,4 @@
-.PHONY: setup test backtest momentum factor notebook lint clean
+.PHONY: setup test backtest momentum factor notebook report lint clean
 
 setup:
 	uv sync
@@ -17,6 +17,10 @@ factor:
 
 notebook:
 	uv run jupyter lab notebooks/
+
+report:
+	uv run python -m scripts.make_report
+	open data/results/report.html
 
 lint:
 	uv run ruff check .
